@@ -5,15 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Secret Santa</title>
     <link rel="stylesheet" href="myStyles.css">
+    <link rel="shortcut icon" href="santa.png">
   </head>
 
   <body>
     <main>
-        <h1>Secret Santa</h1>  
-        <input type="text" placeholder="Your Name" id="giver">
-        <input type="text" placeholder="Their Name" id="receiver">
-        <button id="enter">Enter</button>
+        <div id="main" class="center">
+            <div class="center">
+                <h1><b><em>Secret Santa</em></b></h1> 
+            </div>
+            
+            <div class="center texts">
+                <input type="text" placeholder="Your Name" id="giver"> ⇨ 
+                <input type="text" placeholder="Their Name" id="receiver">
+            </div> 
+    
+            <div class="center">
+                <button id="enter">Enter</button>
+            </div>
+    
+            <div class="center presents">
+                <img src="present 1.png" width="100px" height="100px"/>
+                <img src="present 2.png" width="100px" height="100px"/>
+                <img src="present 1.png" width="100px" height="100px"/>
+            </div>
+        </div>
+        <script src="firebase.js" type="module"></script>
     </main>
-	<script src="index.js"></script>
   </body>
 </html>

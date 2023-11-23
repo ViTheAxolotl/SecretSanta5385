@@ -1,0 +1,62 @@
+body
+{
+    background-image: url("background.jpg");
+    color: white;
+    background-size: 8%;
+}
+
+#main
+{
+    width: 50%;
+    height: 90%;
+    background-color: darkred;
+    color: white;
+    border: black 5px solid;
+}
+
+.center
+{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+div
+{
+    margin: 20px;
+}
+
+.presents
+{
+    margin-top: 18%;
+    background-color: darkred;
+}
+
+button
+{
+    padding: 6px 35px;
+    margin: 5px 0px;
+    background-color: white;
+}
+
+input
+{
+    margin: 15px;
+    background-color: white;
+    color: black;
+}
+
+::placeholder
+{
+    color: black;
+}
+
+h1 div
+{
+    margin-top: 10%;
+}
+
+.texts
+{
+    margin-top: 22%;
+}
