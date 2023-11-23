@@ -39,6 +39,8 @@ function handleEnter()
         reciever = reciever[0].toUpperCase() + reciever.substring(1).toLowerCase();
 
         addPeople(giver, reciever);
+        giverFeild.value = "";
+        recieverFeild.value = "";
     }
 }
 
@@ -48,7 +50,7 @@ async function addPeople(giver, reciever)
     {
         const docRef = await setDoc(doc(db, "Santa", giver), 
         {
-            Text: reciever,
+            "Giving To": reciever,
         });
 
         alert("Submitted, Thank you!")
