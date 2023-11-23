@@ -40,7 +40,7 @@ function handleEnter()
 
         addPeople(giver, reciever);
         giverFeild.value = "";
-        recieverFeild.value = "";
+        receiverFeild.value = "";
     }
 }
 

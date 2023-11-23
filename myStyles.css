@@ -5,6 +5,11 @@ body
     background-size: 8%;
 }
 
+hr
+{
+    color: gray;
+}
+
 #main
 {
     width: 50%;
