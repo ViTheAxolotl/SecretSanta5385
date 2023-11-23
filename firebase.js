@@ -2,8 +2,8 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js';
 import { getFirestore, setDoc, doc, collection } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
 
-const firebaseConfig =
-{
+const firebaseApp = initializeApp
+({
     apiKey: "AIzaSyCauhB3BA-xKg_zqebSit2FwppIq9SZnNI",
     authDomain: "secretsanta-7bc16.firebaseapp.com",
     projectId: "secretsanta-7bc16",
@@ -11,7 +11,7 @@ const firebaseConfig =
     messagingSenderId: "77542571669",
     appId: "1:77542571669:web:2bad279d4fc66db33da59c",
     measurementId: "G-DWF84JPF5M"
-};
+});
 
 const db = getFirestore(firebaseApp);
 
