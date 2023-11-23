@@ -46,7 +46,7 @@ async function addPeople(giver, reciever)
 {
     try 
     {
-        const docRef = await setDoc(doc(db, giver, reciever), 
+        const docRef = await setDoc(doc(db, "Santa", giver), 
         {
             Text: reciever,
         });
