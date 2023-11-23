@@ -50,6 +50,8 @@ async function addPeople(giver, reciever)
         {
             Text: reciever,
         });
+
+        alert("Submitted, Thank you!")
     } 
     
     catch (e) 
