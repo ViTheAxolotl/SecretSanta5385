@@ -46,6 +46,11 @@ function handleEnter()
 
 async function addPeople(giver, reciever)
 {
+    if(document.cookie == null)
+    {
+        alert("Co No");
+    }
+
     try 
     {
         const docRef = await setDoc(doc(db, "Santa", giver), 
@@ -53,6 +58,7 @@ async function addPeople(giver, reciever)
             "Giving To": reciever,
         });
 
+        setCookie(giver, reciever)
         alert("Submitted, Thank you!")
     } 
     
@@ -60,6 +66,14 @@ async function addPeople(giver, reciever)
     {
         console.error("Error adding names: ", e);
     }
+}
+
+function setCookie(giver, reciever)
+{
+    const d = new Date();
+    d.setTime(d.getTime() + (35*24*60*60*1000));
+    let expires = "expires="+ d.toUTCString();
+    document.cookie = "Giver = " + giver + ";" + "Reciever = " + reciever + ";" + expires + ";path=/";
 }
 
 window.onload = init;
