@@ -70,10 +70,11 @@ async function addPeople(giver, reciever)
 
 function setCookie(giver, reciever)
 {
+    let data = [giver, reciever]
     const d = new Date();
     d.setTime(d.getTime() + (35*24*60*60*1000));
     let expires = "expires="+ d.toUTCString();
-    document.cookie = "Giver = " + giver + ";" + "Reciever = " + reciever + ";" + expires + ";path=/";
+    document.cookie = "Data = " + data + ";" + expires + ";path=/";
 }
 
 window.onload = init;
