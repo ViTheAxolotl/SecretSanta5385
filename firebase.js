@@ -40,7 +40,7 @@ function handleEnter()
 
 async function addPeople(giver, reciever)
 {
-    if(!people.contains(giver))
+    if(!people.includes(giver))
     {
         try 
         {
