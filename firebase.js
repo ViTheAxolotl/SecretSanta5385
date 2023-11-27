@@ -2,8 +2,6 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js';
 import { getFirestore, setDoc, getDocs, doc, collection } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
 
-readPeople();
-
 const firebaseApp = initializeApp
 ({
     apiKey: "AIzaSyCauhB3BA-xKg_zqebSit2FwppIq9SZnNI",
@@ -22,6 +20,7 @@ function init()
     let button = document.getElementById("enter");
 
     button.onclick = handleEnter;
+    readPeople();
 }
 
 function handleEnter()
