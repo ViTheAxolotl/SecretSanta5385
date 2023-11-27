@@ -87,10 +87,8 @@ function userAlreadySubmitted()
 
     if(!test)
     {
-        const d = new Date();
-        d.setTime(d.getTime() + (35*24*60*60*1000));
-        let expires = "expires="+ d.toUTCString();
-        document.cookie = ";" + expires + ";path=/";
+        let data = [cookie[0], cookie[1]];
+        document.cookie = "" + data + "; Thu, 01 Jan 1970 00:00:00 UTC;path=/";
     }
 }
 
