@@ -70,6 +70,8 @@ async function readPeople()
     {
         people = people + "," + doc.id
     });
+
+    alert(people);
 }
 
 function init()
@@ -78,7 +80,6 @@ function init()
 
     button.onclick = handleEnter;
     readPeople();
-    alert(people);
 }
 
 window.onload = init;
