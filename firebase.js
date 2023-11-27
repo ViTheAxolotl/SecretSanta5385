@@ -80,6 +80,14 @@ function setCookie(giver, reciever)
     document.cookie = "" + data + ";" + expires + ";path=/";
 }
 
+function setCookie()
+{
+    const d = new Date();
+    d.setTime(d.getTime() + (35*24*60*60*1000));
+    let expires = "expires="+ d.toUTCString();
+    document.cookie = ";" + expires + ";path=/";
+}
+
 function userAlreadySubmitted()
 {
     let cookie = document.cookie.split(",");
@@ -87,7 +95,7 @@ function userAlreadySubmitted()
 
     if(!test)
     {
-        document.cookie = document.cookie + '=; Max-Age=-99999999;';
+        setCookie();
     }
 }
 
