@@ -14,14 +14,7 @@ const firebaseApp = initializeApp
 });
 
 const db = getFirestore(firebaseApp);
-
-function init()
-{
-    let button = document.getElementById("enter");
-
-    button.onclick = handleEnter;
-    readPeople();
-}
+let people;
 
 function handleEnter()
 {
@@ -70,7 +63,21 @@ async function addPeople(giver, reciever)
 
 async function readPeople()
 {
-    const people = await getDocs(collection(db, "Santa"));
+    const q = query(collection(db, "Santa"));
+
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => 
+    {
+        people = people + "," + doc.id
+    });
+}
+
+function init()
+{
+    let button = document.getElementById("enter");
+
+    button.onclick = handleEnter;
+    readPeople();
     alert(people);
 }
 
