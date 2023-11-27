@@ -83,11 +83,11 @@ function setCookie(giver, reciever)
 function userAlreadySubmitted()
 {
     let cookie = document.cookie.split(",");
-    let test = confirm("You have already submitted your pick. You are " + cookie[0] + ", right are are giving a gift to " + cookie[1] + ". If not reach out to Vi.");
+    let test = confirm("You have already submitted your pick. You are " + cookie[0] + ", and are giving a gift to " + cookie[1] + ". If not reach out to Vi.");
 
     if(!test)
     {
-        document.cookie = setCookie("", "");
+        document.cookie = document.cookie + '=; Max-Age=-99999999;';
     }
 }
 
