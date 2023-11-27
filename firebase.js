@@ -40,7 +40,8 @@ function handleEnter()
 
 async function addPeople(giver, reciever)
 {
-
+    if(!people.contains(giver))
+    {
         try 
         {
             const docRef = await setDoc(doc(db, "Santa", giver), 
@@ -56,9 +57,12 @@ async function addPeople(giver, reciever)
         {
             console.error("Error adding names: ", e);
         }
-    
+    }
 
-
+    else
+    {
+        alert(giver + " has already been added to the log.")
+    }
 }
 
 async function readPeople()
@@ -70,8 +74,6 @@ async function readPeople()
     {
         people = people + "," + doc.id
     });
-
-    alert(people);
 }
 
 function init()
