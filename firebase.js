@@ -2,8 +2,6 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js';
 import { getFirestore, setDoc, doc, collection } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
 
-alert(document.cookie);
-
 const firebaseApp = initializeApp
 ({
     apiKey: "AIzaSyCauhB3BA-xKg_zqebSit2FwppIq9SZnNI",
@@ -48,25 +46,28 @@ function handleEnter()
 
 async function addPeople(giver, reciever)
 {
-    if(document.cookie == null)
+    if(document.cookie != "")
     {
-        alert("Co No");
+        try 
+        {
+            const docRef = await setDoc(doc(db, "Santa", giver), 
+            {
+                "Giving To": reciever,
+            });
+
+            setCookie(giver, reciever)
+            alert("Submitted, Thank you!")
+        } 
+    
+        catch (e) 
+        {
+            console.error("Error adding names: ", e);
+        }
     }
 
-    try 
+    else
     {
-        const docRef = await setDoc(doc(db, "Santa", giver), 
-        {
-            "Giving To": reciever,
-        });
-
-        setCookie(giver, reciever)
-        alert("Submitted, Thank you!")
-    } 
-    
-    catch (e) 
-    {
-        console.error("Error adding names: ", e);
+        validateSanta();
     }
 }
 
@@ -77,6 +78,12 @@ function setCookie(giver, reciever)
     d.setTime(d.getTime() + (35*24*60*60*1000));
     let expires = "expires="+ d.toUTCString();
     document.cookie = "Data = " + data + ";" + expires + ";path=/";
+}
+
+function validateSanta()
+{
+    let cookie = document.cookie.split(",");
+    alert("You have already submitted dummy. " + cookie[0] + ", is you right? Your giving a gift to " + cookie[1] + ", silly.");
 }
 
 window.onload = init;
