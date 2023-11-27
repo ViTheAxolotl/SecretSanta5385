@@ -14,66 +14,89 @@ const firebaseApp = initializeApp
 });
 
 const db = getFirestore(firebaseApp);
-let people;
+let people = "";
 
+/**
+ * When the user hits the enter button it takes the info, then passes it to addPeople().
+ */
 function handleEnter()
 {
-    let giverFeild = document.getElementById("giver");
-    let receiverFeild = document.getElementById("receiver")
-    let giver = giverFeild.value;
-    let reciever = receiverFeild.value;
-    if(giver == '' || giver == null || reciever == '' || reciever == null)
+    let giverFeild = document.getElementById("giver"); //Gets the giver textfeild
+    let receiverFeild = document.getElementById("receiver") //Gets the reciever textfeild
+    let giver = giverFeild.value.trim();
+    let reciever = receiverFeild.value.trim();
+
+    if(giver == '' || giver == null || reciever == '' || reciever == null) //If they haven't put something in both feilds
     {
         alert("Both the your name and the person you choose need to be inserted.");
     }
 
-    else
+    else //If there is something in both feilds
     {
-        giver = giver[0].toUpperCase() + giver.substring(1).toLowerCase();
-        reciever = reciever[0].toUpperCase() + reciever.substring(1).toLowerCase();
+        giver = titleCase(giver); 
+        reciever = titleCase(reciever); 
 
         addPeople(giver, reciever);
-        giverFeild.value = "";
-        receiverFeild.value = "";
+        giverFeild.value = ""; //Resets value
+        receiverFeild.value = ""; //Resets value
     }
 }
 
+/**
+ * Puts the name given into Title Case
+ * 
+ * @param {*} name 
+ * @returns 
+ */
+function titleCase(name)
+{
+    name = name[0].toUpperCase() + name.substring(1).toLowerCase();
+    return name;
+}
+
+/**
+ * Puts the names into the database as long as they are not already in there.
+ * 
+ * @param {*} giver 
+ * @param {*} reciever 
+ */
 async function addPeople(giver, reciever)
 {
-    if(!people.includes(giver))
+    if(!people.includes(giver)) //If the name is already in the database.
     {
         try 
         {
             const docRef = await setDoc(doc(db, "Santa", giver), 
             {
                 "Giving To": reciever,
-            });
+            }); //Puts the names into the datebase Santa
 
-            setCookie(giver, reciever)
-            alert("Submitted, Thank you!")
+            alert("Submitted, Thank you!"); 
         } 
     
-        catch (e) 
+        catch (e) //If something goes wrong
         {
-            console.error("Error adding names: ", e);
+            console.error("Error adding names. Ask Vi for help.");
         }
     }
 
-    else
+    else //If the person is already in the db
     {
-        alert(giver + " has already been added to the log.")
+        alert(giver + " has already been added to the log.");
     }
 }
 
-async function readPeople()
-{
-    const q = query(collection(db, "Santa"));
-
-    const querySnapshot = await getDocs(q);
+/**
+ *  Gets all of the people in the database
+ */
+async function readPeople() 
+{ 
+    const querySnapshot = await getDocs(collection(db, "Santa")); //Pulls all the names from the db
+    
     querySnapshot.forEach((doc) => 
     {
         people = people + "," + doc.id
-    });
+    }); //Adds each person to the string
 }
 
 function init()
