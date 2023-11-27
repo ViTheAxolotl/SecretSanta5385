@@ -46,7 +46,7 @@ function handleEnter()
 
 async function addPeople(giver, reciever)
 {
-    if(document.cookie != "")
+    if(document.cookie == "")
     {
         try 
         {
