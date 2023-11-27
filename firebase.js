@@ -37,7 +37,6 @@ function handleEnter()
         reciever = titleCase(reciever); 
 
         addPeople(giver, reciever);
-        location.reload(); //Refreshes page
     }
 }
 
@@ -71,6 +70,7 @@ async function addPeople(giver, reciever)
             }); //Puts the names into the datebase Santa
 
             alert("Submitted, Thank you!"); 
+            location.reload(); //Refreshes page
         } 
     
         catch (e) //If something goes wrong
