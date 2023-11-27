@@ -37,8 +37,7 @@ function handleEnter()
         reciever = titleCase(reciever); 
 
         addPeople(giver, reciever);
-        giverFeild.value = ""; //Resets value
-        receiverFeild.value = ""; //Resets value
+        location.reload(); //Refreshes page
     }
 }
 
