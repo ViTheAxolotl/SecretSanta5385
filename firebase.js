@@ -70,7 +70,6 @@ async function addPeople(giver, reciever)
             }); //Puts the names into the datebase Santa
 
             alert("Submitted, Thank you!"); 
-            location.reload(); //Refreshes page
         } 
     
         catch (e) //If something goes wrong
@@ -83,6 +82,8 @@ async function addPeople(giver, reciever)
     {
         alert(giver + " has already been added to the log.");
     }
+
+    location.reload(); //Refreshes page
 }
 
 /**
