@@ -1,6 +1,8 @@
 "use strict";
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js';
-import { getFirestore, setDoc, doc, collection } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
+import { getFirestore, setDoc, getDocs, doc, collection } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js';
+
+readPeople();
 
 const firebaseApp = initializeApp
 ({
@@ -46,8 +48,7 @@ function handleEnter()
 
 async function addPeople(giver, reciever)
 {
-    if(document.cookie == "")
-    {
+
         try 
         {
             const docRef = await setDoc(doc(db, "Santa", giver), 
@@ -63,33 +64,15 @@ async function addPeople(giver, reciever)
         {
             console.error("Error adding names: ", e);
         }
-    }
+    
 
-    else
-    {
-        userAlreadySubmitted();
-    }
+
 }
 
-function setCookie(giver, reciever)
+async function readPeople()
 {
-    let data = [giver, reciever]
-    const d = new Date();
-    d.setTime(d.getTime() + (35*24*60*60*1000));
-    let expires = "expires="+ d.toUTCString();
-    document.cookie = "" + data + ";" + expires + ";path=/";
-}
-
-function userAlreadySubmitted()
-{
-    let cookie = document.cookie.split(",");
-    let test = confirm("You have already submitted your pick. You are " + cookie[0] + ", and are giving a gift to " + cookie[1] + ". If not reach out to Vi.");
-
-    if(!test)
-    {
-        let data = [cookie[0], cookie[1]];
-        document.cookie = "" + data + "; Thu, 01 Jan 1970 00:00:00 UTC;path=/";
-    }
+    const people = await getDocs(collection(db, "Santa"));
+    alert(people);
 }
 
 window.onload = init;
