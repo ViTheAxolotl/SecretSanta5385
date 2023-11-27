@@ -67,7 +67,7 @@ async function addPeople(giver, reciever)
 
     else
     {
-        validateSanta();
+        userAlreadySubmitted();
     }
 }
 
@@ -80,10 +80,15 @@ function setCookie(giver, reciever)
     document.cookie = "" + data + ";" + expires + ";path=/";
 }
 
-function validateSanta()
+function userAlreadySubmitted()
 {
     let cookie = document.cookie.split(",");
-    alert("You have already submitted dummy. " + cookie[0] + ", is you right? Your giving a gift to " + cookie[1] + ", silly.");
+    let test = confirm("You have already submitted your pick. You are " + cookie[0] + ", right are are giving a gift to " + cookie[1] + ". If not reach out to Vi.");
+
+    if(!test)
+    {
+        document.cookie = setCookie("", "");
+    }
 }
 
 window.onload = init;
