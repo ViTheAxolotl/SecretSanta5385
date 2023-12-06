@@ -29,6 +29,7 @@ function handleEnter()
     if(giver == '' || giver == null || reciever == '' || reciever == null) //If they haven't put something in both feilds
     {
         alert("Both the your name and the person you choose need to be inserted.");
+        alert(people);
     }
 
     else //If there is something in both feilds
@@ -105,7 +106,6 @@ function init()
 
     button.onclick = handleEnter;
     readPeople();
-    alert(people);
 }
 
 window.onload = init;
