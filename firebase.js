@@ -105,6 +105,7 @@ function init()
 
     button.onclick = handleEnter;
     readPeople();
+    alert(people);
 }
 
 window.onload = init;
