@@ -15,6 +15,7 @@ const firebaseApp = initializeApp
 
 const db = getFirestore(firebaseApp);
 let people = "";
+let people2 = "";
 
 /**
  * When the user hits the enter button it takes the info, then passes it to addPeople().
@@ -30,6 +31,7 @@ function handleEnter()
     {
         alert("Both the your name and the person you choose need to be inserted.");
         alert(people);
+        alert("Giv " + people2);
     }
 
     else //If there is something in both feilds
@@ -96,7 +98,8 @@ async function readPeople()
     
     querySnapshot.forEach((doc) => 
     {
-        people = people + "," + doc.id
+        people = people + "," + doc.id;
+        people2 = people2 + "," + doc.data();
     }); //Adds each person to the string
 }
 
